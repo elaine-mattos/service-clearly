@@ -24,6 +24,7 @@ ENV BUILD_SHA=$BUILD_SHA
 
 COPY patches /tmp/patches
 COPY .npmrc package*.json /tmp/
+COPY deps /tmp/deps
 RUN cd /tmp && npm install --production
 RUN mkdir -p "${APPDIR}" && cp -a /tmp/node_modules "${APPDIR}"
 
