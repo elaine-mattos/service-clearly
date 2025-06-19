@@ -1,0 +1,144 @@
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-serde-1.0.123.json:generic-api-key:40
+# False Positives
+a48c6cddf55f530690199ae37489769255076625:test/business/evidence/composer-packagist-mmucklo-krumo-0.7.0.json:generic-api-key:41
+# False Positives
+b5756e26dcedb029741432cdab10b6e5dd7f0e90:test/lib/licenseMatcher.js:generic-api-key:161
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-0.6.4.json:generic-api-key:934
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-0.6.4.json:generic-api-key:930
+# False Positives
+c2fc97c0936fd7bee1a834098c799e9d4a13eed2:test/business/evidence/sourcearchive-mavencentral-org.apache.httpcomponents-httpcore-4.1.json:generic-api-key:28
+# False Positives
+b5756e26dcedb029741432cdab10b6e5dd7f0e90:test/lib/licenseMatcher.js:generic-api-key:134
+# False Positives
+7edeb6a1bc4541a021952d26d5a551b264cfdf65:test/business/evidence/crate-slog-2.7.0.json:generic-api-key:32
+# False Positives
+25e9bdc73aec084bdc1fda26224e4876599f3f7e:routes/originPod.js:generic-api-key:25
+# False Positives
+4b7d71b5233b34eab8a87567fb66b8f058ee63d0:test/lib/licenseMatcher.js:generic-api-key:224
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-0.6.4.json:generic-api-key:44
+# False Positives
+ac40bd6172824027f8248438d7894af850935f6d:test/business/evidence/crate-mpmc-0.1.6.json:generic-api-key:36
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-regex-1.5.3.json:generic-api-key:1194
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-serde-1.0.123.json:generic-api-key:36
+# False Positives
+4b7d71b5233b34eab8a87567fb66b8f058ee63d0:test/lib/licenseMatcher.js:generic-api-key:213
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:224
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:245
+# False Positives
+9c6ac20645f9090b8807a41d99ff38bd584e1e08:full.env.json:generic-api-key:4
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:135
+# False Positives
+e5d35b79a2052da42c44f2a227f69ae6fc008817:routes/originPod.js:generic-api-key:26
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:128
+# False Positives
+ebaae555928a98f72044438f7fd6d4ed8d0c8dbb:test/providers/store/mongoDefinition.js:generic-api-key:127
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-1.0.9.json:generic-api-key:632
+# False Positives
+7edeb6a1bc4541a021952d26d5a551b264cfdf65:test/business/evidence/crate-slog-2.7.0.json:generic-api-key:808
+# False Positives
+a48c6cddf55f530690199ae37489769255076625:test/business/evidence/composer-packagist-mmucklo-krumo-0.7.0.json:generic-api-key:45
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-serde-1.0.123.json:generic-api-key:817
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:167
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:176
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:236
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-serde-1.0.123.json:generic-api-key:821
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:163
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-regex-1.5.3.json:generic-api-key:40
+# False Positives
+73da3b14a9031e3d323964c24985ae3e8cb0c15c:test/business/evidence/sourcearchive-mavencentral-org.apache.httpcomponents-httpcore-4.1.json:generic-api-key:28
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-regex-1.5.3.json:generic-api-key:1198
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:156
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-1.0.9.json:generic-api-key:40
+# False Positives
+a48c6cddf55f530690199ae37489769255076625:test/business/evidence/composer-packagist-mmucklo-krumo-0.7.0.json:generic-api-key:541
+# False Positives
+c2fc97c0936fd7bee1a834098c799e9d4a13eed2:test/business/evidence/sourcearchive-mavencentral-org.apache.httpcomponents-httpcore-4.1.json:generic-api-key:24
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-regex-1.5.3.json:generic-api-key:36
+# False Positives
+768b93d375ecbf095a6c749e76de4a56adc616cf:test/providers/store/trimmedMongoDefinitionStore.js:generic-api-key:175
+# False Positives
+ac40bd6172824027f8248438d7894af850935f6d:test/business/evidence/crate-mpmc-0.1.6.json:generic-api-key:288
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-0.6.4.json:generic-api-key:40
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:232
+# False Positives
+728297a24d53063efecfd7490301bf79a52500b0:test/evidence/issue-312-2.0.11.json:generic-api-key:66
+# False Positives
+b5756e26dcedb029741432cdab10b6e5dd7f0e90:test/lib/licenseMatcher.js:generic-api-key:127
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-serde-1.0.123.json:generic-api-key:825
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-regex-1.5.3.json:generic-api-key:1202
+# False Positives
+7edeb6a1bc4541a021952d26d5a551b264cfdf65:test/business/evidence/crate-slog-2.7.0.json:generic-api-key:36
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-rand-0.8.2.json:generic-api-key:36
+# False Positives
+7edeb6a1bc4541a021952d26d5a551b264cfdf65:test/business/evidence/crate-slog-2.7.0.json:generic-api-key:804
+# False Positives
+c2fc97c0936fd7bee1a834098c799e9d4a13eed2:test/business/evidence/sourcearchive-mavencentral-org.apache.httpcomponents-httpcore-4.1.json:generic-api-key:1423
+# False Positives
+7edeb6a1bc4541a021952d26d5a551b264cfdf65:test/business/evidence/crate-slog-2.7.0.json:generic-api-key:812
+# False Positives
+73da3b14a9031e3d323964c24985ae3e8cb0c15c:test/business/evidence/sourcearchive-mavencentral-org.apache.httpcomponents-httpcore-4.1.json:generic-api-key:24
+# False Positives
+73da3b14a9031e3d323964c24985ae3e8cb0c15c:test/business/evidence/sourcearchive-mavencentral-org.apache.httpcomponents-httpcore-4.1.json:generic-api-key:1423
+# False Positives
+4b7d71b5233b34eab8a87567fb66b8f058ee63d0:test/lib/licenseMatcher.js:generic-api-key:217
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:135
+# False Positives
+728297a24d53063efecfd7490301bf79a52500b0:test/evidence/issue-312-2.0.11.json:generic-api-key:82
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:227
+# False Positives
+4b7d71b5233b34eab8a87567fb66b8f058ee63d0:test/lib/licenseMatcher.js:generic-api-key:227
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-0.6.4.json:generic-api-key:938
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-regex-1.5.3.json:generic-api-key:44
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-1.0.9.json:generic-api-key:628
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:144
+# False Positives
+7edeb6a1bc4541a021952d26d5a551b264cfdf65:test/business/evidence/crate-slog-2.7.0.json:generic-api-key:816
+# False Positives
+b5756e26dcedb029741432cdab10b6e5dd7f0e90:test/lib/licenseMatcher.js:generic-api-key:154
+# False Positives
+45c99e860df8ae585e8ef8b1ef54a32ae5752eb0:test/lib/licenseMatcher.js:generic-api-key:249
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-1.0.9.json:generic-api-key:624
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:217
+# False Positives
+b3b8abdafae2b48c872a89704f8ee68cac83fd30:test/lib/licenseMatcher.js:generic-api-key:213
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-quote-1.0.9.json:generic-api-key:36
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-regex-1.5.3.json:generic-api-key:1206
+# False Positives
+93241372153e80e955318de3b1590d7d1e936266:test/business/evidence/crate-rand-0.8.2.json:generic-api-key:32
