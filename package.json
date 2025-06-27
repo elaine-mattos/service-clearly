@@ -2,6 +2,9 @@
   "name": "service",
   "version": "2.3.0",
   "description": "Service side of clearlydefined.io.",
+  "engines": {
+    "node": "18 || 20"
+  },
   "scripts": {
     "test": "npm run mocha && npm run lint",
     "mocha": "nyc mocha --exit \"test/**/*.js\"",
