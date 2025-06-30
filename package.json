@@ -16,6 +16,7 @@
     "prettier:write": "prettier . --write",
     "dev": "nodemon ./bin/www",
     "start": "node --max-old-space-size=8192 ./bin/www",
+    "debug": "node --inspect=0.0.0.0:9228 --max-old-space-size=8192 ./bin/www",
     "postinstall": "patch-package"
   },
   "license": "MIT",
