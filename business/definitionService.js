@@ -275,7 +275,7 @@ class DefinitionService {
     }
   }
   async _store(definition) {
-    this.logger.debug('storing definition in database', { coordinates: definition.coordinates.toString() })
+    this.logger.debug('storing definition', { coordinates: definition.coordinates.toString() })
     await this.definitionStore.store(definition)
     this.logger.debug('definition stored successfully', { coordinates: definition.coordinates.toString() })
     await this._setDefinitionInCache(this._getCacheKey(definition.coordinates), definition)
