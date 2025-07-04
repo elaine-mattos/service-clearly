@@ -1,5 +1,8 @@
 const config = require('painless-config')
+const appInsights = require('applicationinsights')
+const aiLogger = require('winston-azure-application-insights').AzureApplicationInsightsLogger
 const winston = require('winston')
+const mockInsights = require('../../lib/mockInsights')
 
 /**
  * @typedef {import('winston').Logger} Logger
@@ -13,10 +16,14 @@ const winston = require('winston')
  * @returns {Logger} A configured Winston logger instance.
  */
 function factory(options) {
-  const realOptions = options || {
-    echo: config.get('LOGGER_LOG_TO_CONSOLE') ?? true,
-    level: config.get('APPINSIGHTS_EXPORT_LOG_LEVEL') || 'info'
+  const realOptions = {
+    key: config.get('APPINSIGHTS_INSTRUMENTATIONKEY'),
+    echo: config.get('LOGGER_LOG_TO_CONSOLE') || true,
+    level: config.get('APPINSIGHTS_EXPORT_LOG_LEVEL') || 'info',
+    ...(options || {})
   }
+
+  mockInsights.setup(realOptions.key || 'mock', realOptions.echo)
 
   const logger = winston.createLogger({
     level: realOptions.level,
@@ -31,6 +38,11 @@ function factory(options) {
           )
         ),
         silent: !realOptions.echo
+      }),
+      new aiLogger({
+        insights: appInsights,
+        treatErrorsAsExceptions: true,
+        exitOnError: false
       })
     ]
   })
