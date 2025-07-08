@@ -76,7 +76,7 @@
     "tiny-attribution-generator": "0.1.2",
     "tmp": "0.0.33",
     "vso-node-api": "^6.2.8-preview",
-    "winston": "3.17.0",
+    "winston": "^3.17.0",
     "winston-azure-application-insights": "^4.0.0"
   },
   "devDependencies": {
