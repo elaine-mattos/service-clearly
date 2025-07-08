@@ -52,7 +52,6 @@ class ScanCodeLegacySummarizer {
     return declaredLicense
   }
 
-  //FIXME: how to account for several different scancode versions?
   _readDeclaredLicenseFromSummary(scancodeVersion, harvested) {
     switch (scancodeVersion) {
       case '2.2.1':
@@ -61,7 +60,6 @@ class ScanCodeLegacySummarizer {
       case '2.9.8':
       case '3.0.0':
       case '3.0.2':
-      case '32.0.2':
         return SPDX.normalize(get(harvested, 'content.summary.packages[0].declared_license'))
       case '30.1.0': {
         let declared_license = get(harvested, 'content.summary.packages[0].declared_license')
@@ -78,7 +76,6 @@ class ScanCodeLegacySummarizer {
 
         return SPDX.normalize(declared_license)
       }
-
       default:
         throw new Error(`Invalid version of ScanCode: ${scancodeVersion}`)
     }
