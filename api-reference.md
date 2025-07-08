@@ -22,7 +22,7 @@ These endpoints handle getting, finding, and storing software component definiti
 curl -X GET "http://localhost:4000/definitions/npm/npmjs/-/lodash/4.17.21"
 ```
 
-**Purpose:** Retrieves a complete definition for a specific component including license, attribution, and metadata. If the component doesn't exist, it will be queued for harvesting. 
+**Purpose:** Retrieves a complete definition for a specific component including license, attribution, and metadata. If the component doesn't exist, it will be queued for harvesting.
 
 **Code:** [`getDefinition`](routes/definitions.js) in [`routes/definitions.js`](routes/definitions.js)
 
@@ -53,7 +53,7 @@ curl -X POST "http://localhost:4000/definitions" \
 Examples on how to preview different ways to curate a component's metadata:
 
 - Declared license:
-  
+
 ```bash
 curl -X POST "http://localhost:4000/definitions/npm/npmjs/-/lodash/4.17.21?preview=true" \
   -H "Content-Type: application/json" \
@@ -106,7 +106,7 @@ curl -X POST "http://localhost:4000/definitions/npm/npmjs/-/lodash/4.17.21?previ
 ```
 
 - Combine multiple curation fields:
-  
+
 ```bash
 curl -X POST "http://localhost:4000/definitions/npm/npmjs/-/lodash/4.17.21?preview=true" \
   -H "Content-Type: application/json" \
@@ -131,7 +131,6 @@ For more info, check the [`schemas/curation-1.0.json`](schemas/curation-1.0.json
 **Purpose:** Previews the result of applying a curation (patch) to a component definition, without actually saving it.
 
 **Code:** check the nameless function in [`routes/definitions.js`](routes/definitions.js) between lines 95 and 105
-
 
 ## 2. Origin Endpoints
 
@@ -225,6 +224,7 @@ curl -X GET "http://localhost:4000/origins/nuget/newtonsoft.json"
 ### Other Package Managers
 
 Similar endpoints exist for:
+
 - RubyGems: `/origins/rubygems/{name}/revisions`
 - Composer: `/origins/composer/{vendor}/{name}/revisions`
 - Crates.io: `/origins/crate/{name}/revisions`
@@ -362,7 +362,8 @@ curl -X POST "http://localhost:4000/curations/reprocess" \
 
 ---
 
-**Note:**  
+**Note:**
+
 - All endpoints are defined in [`routes/curations.js`](routes/curations.js).
 - Some endpoints require authentication and/or special permissions.
 
@@ -377,7 +378,7 @@ curl -X POST "http://localhost:4000/harvest" \
   -H "Content-Type: application/json" \
   -d '[{
     "tool": "scancode",
-    "coordinates": { 
+    "coordinates": {
       "type": "npm",
       "provider": "npmjs",
       "name": "lodash",
@@ -476,7 +477,7 @@ Most endpoints use a consistent coordinate system to identify components:
 
 - Format: `{type}/{provider}/{namespace}/{name}/{revision}`
 - Examples:
-  - npm: `npm/npmjs/-/lodash/4.17.21` 
+  - npm: `npm/npmjs/-/lodash/4.17.21`
   - npm scoped: `npm/npmjs/gitbeaker/cli/39.0.0`
   - GitHub: `git/github/clearlydefined/service/v1.0.0`
   - Maven: `maven/mavencentral/org.apache.commons/commons-lang3/3.12.0`

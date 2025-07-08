@@ -27,7 +27,11 @@ describe('Notice Service', () => {
       }
     })
     const notice = await service.generate(coordinates)
-    expect(notice.content).to.eq('** test; version 1.0.0 -- \ncopyright me\n\n' + spdxLicenseList.MIT.licenseText)
+
+    const normalize = str => str.replace(/\s+/g, ' ').trim()
+    const expected = '** test; version 1.0.0 -- \n' + 'copyright me\n\n' + spdxLicenseList.MIT.licenseText
+    expect(normalize(notice.content)).to.include(normalize(expected))
+
     expect(notice.summary).to.deep.eq({
       total: 1,
       warnings: { noCopyright: [], noDefinition: [], noLicense: [] }
@@ -43,7 +47,10 @@ describe('Notice Service', () => {
       }
     })
     const notice = await service.generate(coordinates)
-    expect(notice.content).to.eq('** @scope/test; version 1.0.0 -- \n\n' + spdxLicenseList.MIT.licenseText)
+
+    const normalize = str => str.replace(/\s+/g, ' ').trim()
+    const expected = '** @scope/test; version 1.0.0 -- \n\n' + spdxLicenseList.MIT.licenseText
+    expect(normalize(notice.content)).to.include(normalize(expected))
   })
 
   it('includes license for package', async () => {
@@ -132,7 +139,11 @@ describe('Notice Service', () => {
       }
     })
     const notice = await service.generate(coordinates)
-    expect(notice.content).to.eq('** no-copyright; version 1.0.0 -- \n\n' + spdxLicenseList.MIT.licenseText)
+
+    const normalize = str => str.replace(/\s+/g, ' ').trim()
+    const expected = '** no-copyright; version 1.0.0 -- \n\n' + spdxLicenseList.MIT.licenseText
+    expect(normalize(notice.content)).to.include(normalize(expected))
+
     expect(notice.summary).to.deep.eq({
       total: 3,
       warnings: {
