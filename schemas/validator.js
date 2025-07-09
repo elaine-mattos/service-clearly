@@ -3,9 +3,13 @@
 
 const Ajv = require('ajv')
 const ajvErrors = require('ajv-errors')
+const addFormats = require('ajv-formats')
+
+// Create AJV instance with options
 const ajv = new Ajv({ allErrors: true, strict: false })
 
-// Add support for custom error messages
+// Add formats and error messages support
+addFormats(ajv)
 ajvErrors(ajv)
 
 // Register JSON schemas
