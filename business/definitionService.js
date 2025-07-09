@@ -26,7 +26,7 @@ const {
   simplifyAttributions,
   updateSourceLocation
 } = require('../lib/utils')
-const minimatch = require('minimatch')
+const { minimatch } = require('minimatch')
 const extend = require('extend')
 const logger = require('../providers/logging/logger')
 const validator = require('../schemas/validator')
