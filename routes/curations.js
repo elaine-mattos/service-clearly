@@ -53,7 +53,7 @@ async function getCurationForCoordinates(request, response) {
 }
 
 // Search for any patches related to the given path, as much as is given
-router.get('/:type?/:provider?/:namespace?/:name?', asyncMiddleware(listCurations))
+router.get('{/:type}{/:provider}{/:namespace}{/:name}', asyncMiddleware(listCurations))
 
 async function listCurations(request, response) {
   try {

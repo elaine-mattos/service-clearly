@@ -7,7 +7,6 @@ const router = express.Router()
 const utils = require('../lib/utils')
 const EntityCoordinates = require('../lib/entityCoordinates')
 const validator = require('../schemas/validator')
-
 router.get('/', asyncMiddleware(getDefinition))
 
 async function getDefinition(req, resp) {
@@ -39,7 +38,7 @@ function setup(definition, testFlag = false) {
   definitionService = definition
 
   if (testFlag) {
-    router._getDefinition = getDefinition
+    /** @type {any} */ (router)._getDefinition = getDefinition
   }
   return router
 }
