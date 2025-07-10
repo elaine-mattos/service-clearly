@@ -20,6 +20,7 @@ describe('Curations', () => {
     const content = getFixture('curation-invalid.yaml')
     const curation = new Curation(content)
     expect(curation.isValid).to.be.false
+    console.log('ELAINE', curation.errors[0].error.message)
     expect(curation.errors[0].error.message).to.equal('Release date must be formatted as a YYYY-MM-DD')
   })
 
@@ -183,7 +184,7 @@ describe('Curations', () => {
   })
 
   it('should also accept yaml data objects', () => {
-    const data = yaml.safeLoad('foo: bar')
+    const data = yaml.load('foo: bar')
     const curation = new Curation(data)
     expect(curation.isValid).to.be.false
     expect(curation.errors[0].message).to.equal('Invalid curation')
