@@ -74,7 +74,7 @@ describe('Curation service pr events', () => {
     expect(data).to.be.deep.equalInAnyOrder([complexCuration()])
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
@@ -90,7 +90,7 @@ describe('Curation service pr events', () => {
     expect(data).to.be.deep.equalInAnyOrder([complexCuration()])
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
@@ -117,7 +117,7 @@ describe('Curation service pr events', () => {
 
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
@@ -135,7 +135,7 @@ describe('Curation service pr events', () => {
     expect(updateSpy.args[0][0].number).to.be.equal(12)
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
