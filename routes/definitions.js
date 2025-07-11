@@ -20,7 +20,6 @@ router.get('/:type/:provider/:namespace/:name/:revision', asyncMiddleware(getDef
 // go/golang/github.com/gorilla/mux/v1.7.3
 // which causes routing errors unless we allow for additional fields
 
-
 router.get('/:type/:provider/:namespace/:name/:revision{/:extra1}{/:extra2}{/:extra3}', asyncMiddleware(getDefinition))
 
 async function getDefinition(request, response) {

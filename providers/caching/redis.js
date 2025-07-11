@@ -42,7 +42,7 @@ class RedisCache {
   async get(item) {
     const cacheItem = await this._client.get(item)
     if (!cacheItem) return null
-    
+
     const buffer = Buffer.from(typeof cacheItem === 'string' ? cacheItem : cacheItem.toString(), 'base64')
     const result = pako.inflate(buffer, { to: 'string' })
 
@@ -56,7 +56,6 @@ class RedisCache {
   }
 
   async set(item, value, ttlSeconds) {
-
     if (typeof value !== 'string') value = objectPrefix + JSON.stringify(value)
     const deflated = pako.deflate(value)
     const data = Buffer.from(deflated).toString('base64')
