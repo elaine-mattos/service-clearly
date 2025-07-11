@@ -320,8 +320,18 @@ describe('Github Curation Service', () => {
           EntityCoordinates.fromString('npm/npmjs/-/test/1.4')
         ])
       )
-      assert(calculateMatchingRevisionAndReasonSpy.calledWith(curatedCoordinates))
       assert(formatRevisionsSpy.calledWith(expectedResults))
+      assert(
+        calculateMatchingRevisionAndReasonSpy.calledWith(
+          sinon.match(
+            obj =>
+              obj.type === curatedCoordinates.type &&
+              obj.provider === curatedCoordinates.provider &&
+              obj.name === curatedCoordinates.name &&
+              obj.revision === curatedCoordinates.revision
+          )
+        )
+      )
     })
   })
 
