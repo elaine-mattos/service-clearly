@@ -20,7 +20,6 @@ describe('Curations', () => {
     const content = getFixture('curation-invalid.yaml')
     const curation = new Curation(content)
     expect(curation.isValid).to.be.false
-    console.log('ELAINE', curation.errors[0].error.message)
     expect(curation.errors[0].error.message).to.equal('Release date must be formatted as a YYYY-MM-DD')
   })
 
