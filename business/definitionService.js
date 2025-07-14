@@ -73,15 +73,20 @@ class DefinitionService {
       const curation = this.curationService.get(coordinates, pr)
       return this.compute(coordinates, curation)
     }
+
     let result
     const existing = await this._cacheExistingAside(coordinates, force)
+
     if (existing) {
       result = await this.upgradeHandler.validate(existing)
       if (result) {
         // Log line used for /status page insights
         this.logger.info('computed definition available', { coordinates: coordinates.toString() })
+        // Return early since we have a valid result
+        return this._trimDefinition(this._cast(result), expand)
       }
-    } else result = force ? await this.computeAndStore(coordinates) : await this.computeStoreAndCurate(coordinates)
+    }
+    result = force ? await this.computeAndStore(coordinates) : await this.computeStoreAndCurate(coordinates)
     return this._trimDefinition(this._cast(result), expand)
   }
 
@@ -124,6 +129,7 @@ class DefinitionService {
 
   // ensure the definition is a properly classed object
   _cast(definition) {
+    console.log('CASTING', definition)
     definition.coordinates = EntityCoordinates.fromObject(definition.coordinates)
     return definition
   }

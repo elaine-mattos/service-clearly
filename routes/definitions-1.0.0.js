@@ -38,7 +38,7 @@ function setup(definition, testFlag = false) {
   definitionService = definition
 
   if (testFlag) {
-    /** @type {any} */ ;(router)._getDefinition = getDefinition
+    /** @type {any} */ router._getDefinition = getDefinition
   }
   return router
 }
