@@ -777,7 +777,7 @@ ${this._formatDefinitions(patch.patches)}`
         context: 'ClearlyDefined'
       })
     } catch (error) {
-      this.logger.info(`Failed to create status for PR #${number}`)
+      this.logger.info(`Failed to create status for PR #${number}.  Message: ${error.message}`)
     }
   }
 
@@ -792,7 +792,8 @@ ${this._formatDefinitions(patch.patches)}`
         owner,
         repo,
         number,
-        body
+        body,
+        issue_number: 0
       })
     } catch (error) {
       this.logger.info(`Failed to comment on PR #${number}: ${error}`)

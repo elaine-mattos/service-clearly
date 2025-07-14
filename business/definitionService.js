@@ -186,6 +186,10 @@ class DefinitionService {
         try {
           return await this.list(coordinates)
         } catch (error) {
+          this.logger.error('failed to list definitions', {
+            error,
+            coordinates: coordinates.toString()
+          })
           return null
         }
       })
@@ -434,6 +438,10 @@ class DefinitionService {
       parse(get(definition, 'licensed.declared')) // use strict spdx-expression-parse
       return weights.spdx
     } catch (e) {
+      this.logger.error(`Error while parsing SPDX expression: ${e.message}`, {
+        coordinates: definition.coordinates.toString(),
+        expression: get(definition, 'licensed.declared')
+      })
       return 0
     }
   }
