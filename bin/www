@@ -6,7 +6,8 @@ const config = require('./config')
 const app = require('../app')(config)
 const debug = require('debug')('service:server')
 const http = require('http')
-const init = require('./app-init')
+const init = require('express-init')
+
 /**
  * Get port from environment and store in Express.
  */
