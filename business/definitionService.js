@@ -129,7 +129,6 @@ class DefinitionService {
 
   // ensure the definition is a properly classed object
   _cast(definition) {
-    console.log('CASTING', definition)
     definition.coordinates = EntityCoordinates.fromObject(definition.coordinates)
     return definition
   }
@@ -187,8 +186,7 @@ class DefinitionService {
           return await this.list(coordinates)
         } catch (error) {
           this.logger.error('failed to list definitions', {
-            error,
-            coordinates: coordinates.toString()
+            error: error.message
           })
           return null
         }
@@ -438,10 +436,7 @@ class DefinitionService {
       parse(get(definition, 'licensed.declared')) // use strict spdx-expression-parse
       return weights.spdx
     } catch (e) {
-      this.logger.error(`Error while parsing SPDX expression: ${e.message}`, {
-        coordinates: definition.coordinates.toString(),
-        expression: get(definition, 'licensed.declared')
-      })
+      this.logger.error(`Error while parsing SPDX expression: ${e.message}`)
       return 0
     }
   }
