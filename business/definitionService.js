@@ -26,7 +26,7 @@ const {
   simplifyAttributions,
   updateSourceLocation
 } = require('../lib/utils')
-const minimatch = require('minimatch')
+const { minimatch } = require('minimatch')
 const extend = require('extend')
 const logger = require('../providers/logging/logger')
 const validator = require('../schemas/validator')
@@ -73,6 +73,8 @@ class DefinitionService {
       const curation = this.curationService.get(coordinates, pr)
       return this.compute(coordinates, curation)
     }
+
+    let result
     const existing = await this._cacheExistingAside(coordinates, force)
     let result = await this.upgradeHandler.validate(existing)
     if (result) {
@@ -180,6 +182,9 @@ class DefinitionService {
         try {
           return await this.list(coordinates)
         } catch (error) {
+          this.logger.error('failed to list definitions', {
+            error: error.message
+          })
           return null
         }
       })
@@ -302,9 +307,10 @@ class DefinitionService {
       })
     }
   }
-
   async _store(definition) {
+    this.logger.debug('storing definition', { coordinates: definition.coordinates.toString() })
     await this.definitionStore.store(definition)
+    this.logger.debug('definition stored successfully', { coordinates: definition.coordinates.toString() })
     await this._setDefinitionInCache(this._getCacheKey(definition.coordinates), definition)
     await this.harvestService.done(definition.coordinates)
   }
@@ -465,6 +471,7 @@ class DefinitionService {
       parse(get(definition, 'licensed.declared')) // use strict spdx-expression-parse
       return weights.spdx
     } catch (e) {
+      this.logger.error(`Error while parsing SPDX expression: ${e.message}`)
       return 0
     }
   }

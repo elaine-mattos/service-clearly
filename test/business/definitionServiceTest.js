@@ -662,7 +662,7 @@ function setupWithDelegates(
     cache,
     upgradeHandler
   )
-  service.logger = { info: sinon.stub(), debug: () => {} }
+  service.logger = { info: sinon.stub(), debug: sinon.stub(), error: sinon.stub() }
   return service
 }
 
@@ -714,7 +714,7 @@ function setup(definition, coordinateSpec, curation) {
     cache,
     upgradeHandler
   )
-  service.logger = { info: sinon.stub(), debug: sinon.stub() }
+  service.logger = { info: sinon.stub(), debug: sinon.stub(), error: sinon.stub() }
   service._harvest = sinon.stub()
   const coordinates = EntityCoordinates.fromString(coordinateSpec || 'npm/npmjs/-/test/1.0')
   return { coordinates, service, harvestService }

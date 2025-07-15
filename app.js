@@ -109,9 +109,10 @@ function createApp(config) {
 
   const app = express()
   app.use(cors())
-  app.options('*', cors())
+  // new express v5 matching syntax: https://expressjs.com/en/guide/migrating-5.html#path-syntax
+  app.options('*splat', cors())
   app.use(cookieParser())
-  app.use(helmet())
+  app.use(helmet.default())
   app.use(requestId())
   app.use('/schemas', express.static('./schemas'))
 
@@ -237,7 +238,7 @@ function createApp(config) {
         error: {
           code: status.toString(),
           message: 'An error has occurred',
-          innererror: serializeError(response.locals.error)
+          innererror: serializeError.serializeError(response.locals.error)
         }
       })
   })

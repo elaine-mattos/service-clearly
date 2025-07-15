@@ -1,0 +1,17 @@
+# service
+# Copyright 2025 DB Systel GmbH
+# Licensed under the DBISL, see the accompanying file LICENSE.
+# currently uses the same reference id as compliance suite
+
+---
+version: v3
+confidentiality: internal
+contacts: DevEx.Core.Services@deutschebahn.com
+license: LicenseRef-DBISL
+reference-ids: C-202542
+protected-branches:
+  - main
+custom:
+  integrity: normal
+  availability: normal
+  confidentiality: normal

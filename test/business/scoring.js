@@ -153,7 +153,19 @@ describe('Definition Service Scoring', () => {
 })
 
 function createService() {
-  return DefinitionService()
+  const service = DefinitionService()
+
+  const mockLogger = {
+    info: () => {},
+    error: () => {},
+    debug: () => {},
+    warn: () => {},
+    verbose: () => {}
+  }
+
+  service.logger = mockLogger
+
+  return service
 }
 
 function createDefinition(declared, files) {
