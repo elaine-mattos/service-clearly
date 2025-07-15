@@ -5,7 +5,7 @@ const config = require('painless-config')
 const location = config.get('FILE_STORE_LOCATION') || (process.platform === 'win32' ? 'c:/temp/cd' : '/tmp/cd')
 
 function harvest(options) {
-  return require('./fileHarvestStore')(options || { location })
+  return require('./fileHarvestStore')(options || { location: location + '-definition' })
 }
 
 function definition(options) {

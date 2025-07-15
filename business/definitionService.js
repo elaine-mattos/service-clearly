@@ -26,7 +26,7 @@ const {
   simplifyAttributions,
   updateSourceLocation
 } = require('../lib/utils')
-const minimatch = require('minimatch')
+const { minimatch } = require('minimatch')
 const extend = require('extend')
 const logger = require('../providers/logging/logger')
 const validator = require('../schemas/validator')
@@ -73,12 +73,20 @@ class DefinitionService {
       const curation = this.curationService.get(coordinates, pr)
       return this.compute(coordinates, curation)
     }
+
+    let result
     const existing = await this._cacheExistingAside(coordinates, force)
-    let result = await this.upgradeHandler.validate(existing)
-    if (result) {
-      // Log line used for /status page insights
-      this.logger.info('computed definition available', { coordinates: coordinates.toString() })
-    } else result = force ? await this.computeAndStore(coordinates) : await this.computeStoreAndCurate(coordinates)
+
+    if (existing) {
+      result = await this.upgradeHandler.validate(existing)
+      if (result) {
+        // Log line used for /status page insights
+        this.logger.info('computed definition available', { coordinates: coordinates.toString() })
+        // Return early since we have a valid result
+        return this._trimDefinition(this._cast(result), expand)
+      }
+    }
+    result = force ? await this.computeAndStore(coordinates) : await this.computeStoreAndCurate(coordinates)
     return this._trimDefinition(this._cast(result), expand)
   }
 
@@ -177,6 +185,9 @@ class DefinitionService {
         try {
           return await this.list(coordinates)
         } catch (error) {
+          this.logger.error('failed to list definitions', {
+            error: error.message
+          })
           return null
         }
       })
@@ -274,9 +285,10 @@ class DefinitionService {
       })
     }
   }
-
   async _store(definition) {
+    this.logger.debug('storing definition', { coordinates: definition.coordinates.toString() })
     await this.definitionStore.store(definition)
+    this.logger.debug('definition stored successfully', { coordinates: definition.coordinates.toString() })
     await this._setDefinitionInCache(this._getCacheKey(definition.coordinates), definition)
   }
 
@@ -424,6 +436,7 @@ class DefinitionService {
       parse(get(definition, 'licensed.declared')) // use strict spdx-expression-parse
       return weights.spdx
     } catch (e) {
+      this.logger.error(`Error while parsing SPDX expression: ${e.message}`)
       return 0
     }
   }

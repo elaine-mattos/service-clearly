@@ -7,7 +7,6 @@ const router = express.Router()
 const utils = require('../lib/utils')
 const EntityCoordinates = require('../lib/entityCoordinates')
 const validator = require('../schemas/validator')
-
 router.get('/', asyncMiddleware(getDefinition))
 
 async function getDefinition(req, resp) {
@@ -26,7 +25,7 @@ async function getDefinition(req, resp) {
   try {
     coordinatesEntity = await utils.toNormalizedEntityCoordinates(coordinatesEntity)
   } catch (err) {
-    return resp.status(404).send(`The ${encodeURIComponent(coordinates)} is not public.`)
+    return resp.status(404).send(`The ${encodeURIComponent(coordinates)} is not public. Error: ${err.message}`)
   }
   const result = await definitionService.get(coordinatesEntity, pr, force, expand)
 
@@ -39,7 +38,7 @@ function setup(definition, testFlag = false) {
   definitionService = definition
 
   if (testFlag) {
-    router._getDefinition = getDefinition
+    /** @type {any} */ router._getDefinition = getDefinition
   }
   return router
 }

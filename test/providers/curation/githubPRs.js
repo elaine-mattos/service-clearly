@@ -74,7 +74,7 @@ describe('Curation service pr events', () => {
     expect(data).to.be.deep.equalInAnyOrder([complexCuration()])
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
@@ -90,7 +90,7 @@ describe('Curation service pr events', () => {
     expect(data).to.be.deep.equalInAnyOrder([complexCuration()])
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
@@ -117,7 +117,7 @@ describe('Curation service pr events', () => {
 
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
@@ -135,7 +135,7 @@ describe('Curation service pr events', () => {
     expect(updateSpy.args[0][0].number).to.be.equal(12)
     const cacheDeleteSpy = service.cache.delete
     expect(cacheDeleteSpy.calledTwice).to.be.true
-    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.equalInAnyOrder([
+    expect([cacheDeleteSpy.args[0][0], cacheDeleteSpy.args[1][0]]).to.deep.equalInAnyOrder([
       'cur_npm/npmjs/-/foo/1.0',
       'cur_npm/npmjs/-/foo'
     ])
@@ -191,12 +191,13 @@ describe('Curation service pr events', () => {
             expect(ref).to.eq('branch')
             return Promise.resolve()
           },
-          blob: () => Promise.resolve(new Buffer.alloc(0))
+          blob: () => Promise.resolve(Buffer.alloc(0))
         }
       }
     })
     const coordinates = EntityCoordinates.fromString('npm/npmjs/-/test/1.0.0')
     const content = await service._getCurations(coordinates)
+    console.log('content', content)
     expect(content).to.be.null
   })
 
@@ -289,6 +290,13 @@ function createService({ failsCompute = false, geitStubOverride = null }) {
         blob: () => Promise.resolve(new Buffer.alloc(0))
       }
     })
+
+  require('../../../providers/logging/logger')({
+    error: sinon.stub(),
+    info: sinon.stub(),
+    debug: sinon.stub()
+  })
+
   const service = proxyquire('../../../providers/curation/github', { geit: geitStub })(
     { owner: 'owner', repo: 'repo', branch: 'branch', token: 'token' },
     store,
@@ -311,7 +319,7 @@ function createService({ failsCompute = false, geitStubOverride = null }) {
         return {
           data: {
             sha: files[path].sha,
-            content: base64.encode(yaml.safeDump(files[path].content, { sortKeys: true, lineWidth: 150 }))
+            content: base64.encode(yaml.dump(files[path].content, { sortKeys: true, lineWidth: 150 }))
           }
         }
       }
