@@ -316,9 +316,9 @@ class GitHubCurationService {
       fileBody.committer = { name: info.name || info.login, email: info.email }
     if (get(currentContent, '_origin.sha')) {
       fileBody.sha = currentContent._origin.sha
-      return serviceGithub.repos.updateFile(fileBody)
+      return serviceGithub.rest.repos.createOrUpdateFileContents(fileBody)
     }
-    return serviceGithub.repos.createFile(fileBody)
+    return serviceGithub.rest.repos.createOrUpdateFileContents(fileBody)
   }
 
   async _getUserInfo(githubCli) {
@@ -532,17 +532,18 @@ class GitHubCurationService {
 
   async _addOrUpdate(userGithub, serviceGithub, info, patch) {
     const { owner, repo, branch } = this.options
-    const masterBranch = await serviceGithub.repos.getBranch({ owner, repo, branch: `refs/heads/${branch}` })
+    const masterBranch = await serviceGithub.rest.repos.getBranch({ owner, repo, branch: `refs/heads/${branch}` })
     const sha = masterBranch.data.commit.sha
     const prBranch = this._getBranchName(info)
-    await serviceGithub.gitdata.createReference({ owner, repo, ref: `refs/heads/${prBranch}`, sha })
+
+    await serviceGithub.rest.git.createRef({ owner, repo, ref: `refs/heads/${prBranch}`, sha })
 
     await Promise.all(
       // Throat value MUST be kept at 1, otherwise GitHub will write concurrent patches
       patch.patches.map(throat(1, component => this._writePatch(userGithub, serviceGithub, info, component, prBranch)))
     )
 
-    const result = await (userGithub || serviceGithub).pullRequests.create({
+    const result = await (userGithub || serviceGithub).rest.pulls.create({
       owner,
       repo,
       title: patch.contributionInfo.summary,
@@ -554,10 +555,10 @@ class GitHubCurationService {
     const comment = {
       owner,
       repo,
-      number,
+      issue_number: number,
       body: `You can review the change introduced to the full definition at [ClearlyDefined](${this._getCurationReviewUrl(number)}).`
     }
-    await serviceGithub.issues.createComment(comment)
+    await serviceGithub.rest.issues.createComment(comment)
     return result
   }
 
