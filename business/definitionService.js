@@ -74,7 +74,6 @@ class DefinitionService {
       return this.compute(coordinates, curation)
     }
 
-    let result
     const existing = await this._cacheExistingAside(coordinates, force)
     let result = await this.upgradeHandler.validate(existing)
     if (result) {
@@ -465,13 +464,11 @@ class DefinitionService {
     if (!declared || !discovered) return 0
     return discovered.every(expression => SPDX.satisfies(expression, declared)) ? weights.consistency : 0
   }
-
   _computeSPDXScore(definition) {
     try {
       parse(get(definition, 'licensed.declared')) // use strict spdx-expression-parse
       return weights.spdx
     } catch (e) {
-      this.logger.error(`Error while parsing SPDX expression: ${e.message}`)
       return 0
     }
   }
